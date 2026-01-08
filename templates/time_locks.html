@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Locks | CipherNestt</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+
+<div class="vault-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>CipherNestt</h2>
+        <ul>
+            <li><a href="/dashboard">🔐 Vault</a></li>
+            <li><a href="/my-files">📁 My Files</a></li>
+            <li class="active"><a href="/time-locks">⏳ Time-Locks</a></li>
+            <li><a href="/self-destruct">💣 Self-Destruct</a></li>
+            <li><a href="/logout">🚪 Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="vault-main">
+        <div class="topbar">
+            <h1>Active Time Locks</h1>
+            <span class="status amber">⏳ Locked</span>
+        </div>
+
+        {% if files|length == 0 %}
+            <div class="alert error">
+                No active time-locked files.
+            </div>
+        {% endif %}
+
+        <div class="card-grid">
+            {% for file in files %}
+            <div class="vault-card lock">
+                <span class="badge locked">Locked</span>
+                <h3>{{ file.original_name }}</h3>
+                <p class="muted">
+                    Unlocks at:<br>
+                    {{ file.unlock_time.strftime("%d %b %Y, %H:%M:%S") }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | CipherNestt</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+
+<div class="vault-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>CipherNestt</h2>
+        <ul>
+            <li class="active"><a href="/dashboard">🔐 Vault</a></li>
+            <li><a href="/my-files">📁 My Files</a></li>
+            <li><a href="/time-locks">⏳ Time-Locks</a></li>
+            <li><a href="/self-destruct">💣 Self-Destruct</a></li>
+            <li><a href="/logout">🚪 Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="vault-main">
+
+        <div class="topbar">
+            <h1>Secure Vault</h1>
+            <span class="status">🔒 Encrypted Session Active</span>
+        </div>
+
+        <!-- FLASH MESSAGE -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert error">
+                {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <!-- ENCRYPT + PIN + TIME LOCK FORM -->
+        <div class="upload-card">
+            <h3>Encrypt & Lock File</h3>
+            <p>
+                Set a secure PIN and define exactly how long this vault should remain locked.
+                <br>
+                <strong>After time expiry → “Now you can open your vault”</strong>
+            </p>
+
+            <form method="post" action="/encrypt-upload" enctype="multipart/form-data">
+
+                <!-- FILE -->
+                <input type="file" name="file" required>
+
+                <!-- PIN -->
+                <input type="password"
+                       name="pin"
+                       placeholder="Set Secure PIN (min 4 digits)"
+                       required>
+
+                <h4 style="margin-top:15px;">⏳ Time Lock Duration</h4>
+
+                <!-- TIME LOCK INPUTS -->
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+
+                    <input type="number" name="years" placeholder="Years" min="0">
+                    <input type="number" name="months" placeholder="Months" min="0">
+                    <input type="number" name="days" placeholder="Days" min="0">
+
+                    <input type="number" name="hours" placeholder="Hours" min="0">
+                    <input type="number" name="minutes" placeholder="Minutes" min="0">
+                    <input type="number" name="seconds" placeholder="Seconds" min="0">
+
+                </div>
+
+                <button type="submit" style="margin-top:15px;">
+                    🔒 Encrypt & Apply Time Lock
+                </button>
+            </form>
+        </div>
+
+        <!-- INFO BOXES -->
+        <div class="info-grid">
+            <div class="info-box">
+                <h4>🔐 AES Encryption</h4>
+                <p>Persistent key based encryption</p>
+            </div>
+            <div class="info-box">
+                <h4>⏳ Time Lock</h4>
+                <p>Custom duration (years → seconds)</p>
+            </div>
+            <div class="info-box">
+                <h4>💣 Self-Destruct</h4>
+                <p>3 wrong PIN attempts</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>

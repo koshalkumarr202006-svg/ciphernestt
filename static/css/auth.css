@@ -1,0 +1,595 @@
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #f5f7fb;
+}
+
+/* ===============================
+   LANDING PAGE
+================================ */
+.landing {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(120deg, #020617, #0f172a);
+    color: white;
+}
+
+.landing-left {
+    flex: 1;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing-left h1 {
+    font-size: 64px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.tagline span {
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+.desc {
+    font-size: 16px;
+    opacity: 0.85;
+    max-width: 420px;
+    margin-bottom: 40px;
+}
+
+.cta-buttons a {
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #38bdf8;
+    color: black;
+}
+
+.btn-primary:hover {
+    background: #0ea5e9;
+}
+
+.btn-secondary {
+    border: 2px solid #38bdf8;
+    color: #38bdf8;
+}
+
+.btn-secondary:hover {
+    background: #38bdf8;
+    color: black;
+}
+
+.landing-right {
+    flex: 1;
+    background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c")
+        no-repeat center;
+    background-size: cover;
+}
+
+/* ===============================
+   LOGIN / REGISTER
+================================ */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left {
+    flex: 1;
+    background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+        no-repeat center;
+    background-size: cover;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.55);
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+}
+
+.overlay h1 {
+    font-size: 48px;
+}
+
+.overlay p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.right {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+}
+
+.right h2 {
+    font-size: 36px;
+    color: #0f172a;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    color: #64748b;
+}
+
+.right form input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 16px;
+}
+
+.right form input:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+.right form button {
+    width: 100%;
+    padding: 14px;
+    background: #38bdf8;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.right form button:hover {
+    background: #0ea5e9;
+}
+
+.bottom-text {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.bottom-text a {
+    color: #0ea5e9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ===============================
+   DASHBOARD / VAULT
+================================ */
+.vault-layout {
+    display: flex;
+    height: 100vh;
+    background: #020617;
+    color: white;
+}
+
+.sidebar {
+    width: 240px;
+    background: #020617;
+    border-right: 1px solid #1e293b;
+    padding: 30px 20px;
+}
+
+.sidebar h2 {
+    color: #38bdf8;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+/* IMPORTANT: SIDEBAR LINKS */
+.sidebar ul li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+.vault-main {
+    flex: 1;
+    padding: 40px;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+/* TOP BAR */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    font-size: 32px;
+}
+
+.status {
+    background: #022c22;
+    color: #4ade80;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* UPLOAD CARD */
+.upload-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+}
+
+/* INFO BOXES */
+.info-grid {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.info-box {
+    flex: 1;
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.info-box h4 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* ===============================
+   MY FILES TABLE  (STEP-C)
+================================ */
+.files-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #020617;
+    border: 1px solid #1e293b;
+}
+
+.files-table th,
+.files-table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #1e293b;
+}
+
+.files-table th {
+    color: #38bdf8;
+}
+
+.safe {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+.danger {
+    color: #f87171;
+    font-weight: bold;
+}
+
+.btn.small {
+    padding: 6px 12px;
+    font-size: 13px;
+    background: #38bdf8;
+    color: black;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.btn.danger {
+    background: #f87171;
+    color: black;
+}
+/* ===============================
+   ALERT / ERROR MESSAGE
+================================ */
+.alert {
+    padding: 15px 18px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.alert.error {
+    background: #450a0a;
+    border-left: 5px solid #f87171;
+    color: #fecaca;
+}
+
+.alert.error strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #f87171;
+}
+/* ===============================
+   TIME LOCK & SELF DESTRUCT UI
+================================ */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.vault-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
+
+.vault-card:hover {
+    transform: translateY(-5px);
+}
+
+.vault-card h3 {
+    margin-bottom: 8px;
+}
+
+.muted {
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+/* BADGES */
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* TIME LOCK */
+.vault-card.lock {
+    border-color: #38bdf8;
+}
+
+.badge.locked {
+    background: #0c4a6e;
+    color: #38bdf8;
+}
+
+/* SELF DESTRUCT */
+.vault-card.destroy {
+    border-color: #f87171;
+}
+
+.badge.destroyed {
+    background: #450a0a;
+    color: #f87171;
+}
+
+/* STATUS COLORS */
+.status.amber {
+    background: #422006;
+    color: #facc15;
+}
+
+.status.danger {
+    background: #450a0a;
+    color: #f87171;
+}
+/* ===============================
+   PREMIUM LOGIN PAGE (SCOPED)
+   Does NOT affect other pages
+================================ */
+
+.loginx-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT */
+.loginx-left {
+    flex: 1;
+    background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c")
+        no-repeat center;
+    background-size: cover;
+}
+
+.loginx-overlay {
+    height: 100%;
+    background: rgba(2, 6, 23, 0.75);
+    color: white;
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginx-overlay h1 {
+    font-size: 56px;
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+.loginx-overlay p {
+    font-size: 22px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.loginx-overlay span {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* RIGHT */
+.loginx-right {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARD */
+.loginx-card {
+    width: 380px;
+    padding: 45px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.loginx-card h2 {
+    font-size: 34px;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.loginx-sub {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* INPUTS */
+.loginx-card input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 15px;
+}
+
+.loginx-card input:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+/* BUTTON */
+.loginx-card button {
+    width: 100%;
+    padding: 14px;
+    background: #38bdf8;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.loginx-card button:hover {
+    background: #0ea5e9;
+}
+
+/* BOTTOM */
+.loginx-bottom {
+    margin-top: 22px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.loginx-bottom a {
+    color: #0ea5e9;
+    text-decoration: none;
+    font-weight: bold;
+}
+STEP-2: my_files.html KO UPDATE KARO (COUNTDOWN AREA)
+
+📄 File: templates/my_files.html
+👉 Unlock button ke upar ye block add karo
+
+✅ Replace Actions column content with this
+{% if file.unlock_time %}
+    <div class="countdown"
+         data-unlock="{{ file.unlock_time.isoformat() }}">
+        ⏳ Calculating...
+    </div>
+{% else %}
+    <span class="safe">No Time Lock</span>
+{% endif %}
+/* ===============================
+   FINAL VAULT LAYOUT FIX
+   (Safe patch – does NOT break old UI)
+================================ */
+
+/* Fix white strip / horizontal gap */
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #020617;
+    overflow-x: hidden;
+}
+
+/* Ensure vault uses full screen width */
+.vault-layout {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* Sidebar full height */
+.sidebar {
+    min-height: 100vh;
+}
+
+/* Countdown text */
+.countdown {
+    font-size: 13px;
+    color: #facc15;
+    font-weight: bold;
+}

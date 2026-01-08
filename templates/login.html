@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | CipherNestt</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+
+<div class="loginx-wrapper">
+
+    <!-- LEFT SIDE -->
+    <div class="loginx-left">
+        <div class="loginx-overlay">
+            <h1>CipherNestt</h1>
+            <p>
+                Secure Digital Vault<br>
+                with Time-Lock & Self-Destruct
+            </p>
+            <span>🔐 Cyber-grade file security</span>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="loginx-right">
+
+        <div class="loginx-card">
+            <h2>Welcome Back</h2>
+            <p class="loginx-sub">Login to access your vault</p>
+
+            <!-- FLASH -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert error">
+                    <strong>Error</strong>
+                    {{ messages[0] }}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <form method="post" action="/login">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">🔓 Login</button>
+            </form>
+
+            <p class="loginx-bottom">
+                Don’t have an account?
+                <a href="/register">Create Account</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

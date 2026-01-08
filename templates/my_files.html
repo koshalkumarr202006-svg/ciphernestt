@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Files | CipherNestt</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+
+<div class="vault-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>CipherNestt</h2>
+        <ul>
+            <li><a href="/dashboard">🔐 Vault</a></li>
+            <li class="active"><a href="/my-files">📁 My Files</a></li>
+            <li><a href="/time-locks">⏳ Time-Locks</a></li>
+            <li><a href="/self-destruct">💣 Self-Destruct</a></li>
+            <li><a href="/logout">🚪 Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="vault-main">
+
+        <div class="topbar">
+            <h1>My Encrypted Files</h1>
+            <span class="status">🔒 Secure Storage</span>
+        </div>
+
+        <!-- FLASH MESSAGE -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert error">
+                {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <!-- FILES TABLE -->
+        <div class="files-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Status</th>
+                        <th>Time Lock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% for file in files %}
+                    <tr>
+                        <!-- FILE NAME -->
+                        <td>{{ file.original_name }}</td>
+
+                        <!-- STATUS -->
+                        <td>
+                            {% if file.destroyed %}
+                                <span class="danger">Destroyed</span>
+                            {% else %}
+                                <span class="safe">Encrypted</span>
+                            {% endif %}
+                        </td>
+
+                        <!-- TIME LOCK -->
+                        <td>
+                            {% if file.unlock_time %}
+                                <div class="countdown"
+                                     data-unlock="{{ file.unlock_time.isoformat() }}">
+                                    ⏳ Calculating...
+                                </div>
+                            {% else %}
+                                <span class="safe">No Time Lock</span>
+                            {% endif %}
+                        </td>
+
+                        <!-- ACTIONS -->
+                        <td>
+                            {% if file.destroyed %}
+                                <span class="danger">N/A</span>
+                            {% else %}
+                                <form method="post"
+                                      action="/unlock/{{ file._id }}"
+                                      style="display:flex; gap:6px; align-items:center;">
+
+                                    <input type="password"
+                                           name="pin"
+                                           placeholder="PIN"
+                                           required
+                                           style="width:90px; padding:6px; font-size:13px;">
+
+                                    <button type="submit" class="btn small">
+                                        Unlock
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<!-- ================= PART-3: COUNTDOWN SCRIPT ================= -->
+<script>
+document.querySelectorAll(".countdown").forEach(el => {
+    const unlockTime = new Date(el.dataset.unlock);
+
+    function update() {
+        const now = new Date();
+        const diff = unlockTime - now;
+
+        if (diff <= 0) {
+            el.innerHTML = "✅ Now you can open your vault";
+            el.style.color = "#4ade80";
+            return;
+        }
+
+        const sec = Math.floor(diff / 1000);
+        const h = Math.floor(sec / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+
+        el.innerHTML = `⏳ Unlocks in: ${h}h ${m}m ${s}s`;
+    }
+
+    update();
+    setInterval(update, 1000);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self-Destructed Files | CipherNestt</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+
+<div class="vault-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>CipherNestt</h2>
+        <ul>
+            <li><a href="/dashboard">🔐 Vault</a></li>
+            <li><a href="/my-files">📁 My Files</a></li>
+            <li><a href="/time-locks">⏳ Time-Locks</a></li>
+            <li class="active"><a href="/self-destruct">💣 Self-Destruct</a></li>
+            <li><a href="/logout">🚪 Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="vault-main">
+
+        <div class="topbar">
+            <h1>💣 Self-Destructed Files</h1>
+            <span class="status danger">☠ Permanently Destroyed</span>
+        </div>
+
+        <div class="card-grid">
+
+            {% for file in files %}
+            <div class="vault-card destroy">
+                <h3>{{ file.original_name }}</h3>
+                <p class="muted">File permanently destroyed</p>
+                <span class="badge destroyed">NO RECOVERY</span>
+            </div>
+            {% else %}
+            <p class="muted">No destroyed files</p>
+            {% endfor %}
+
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
